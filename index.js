@@ -61,21 +61,62 @@ const populateCompany = (type, data, container) => {
 };
 
 const populateMainCompany = (type, data, container) => {
-  var lineGenerator = d3.line();
-  var points = [
-    [0, 80],
-    [100, 100],
-    [200, 20],
-    [300, 100],
-    [400, 40],
-    [500, 80]
-
+  var lineData = [
+    { x: 1, y: 5 },
+    { x: 20, y: 20 },
+    { x: 40, y: 10 },
+    { x: 60, y: 40 },
+    { x: 80, y: 5 },
+    { x: 100, y: 60 },
+    { x: 500, y: 60 },
+    { x: 600, y: -8 },
+    { x: 700, y: -10 },
   ];
 
+  var lineFunction = d3
+    .line()
+    .x(function (d) {
+      return d.x;
+    })
+    .y(function (d) {
+      return d.y;
+    })
+    .curve(d3.curveLinear);
 
-  var pathData = lineGenerator(points);
+  let svg = d3
+    .select(`.${container}`)
+    .append("svg")
+    .attr("width", mainCompany.width)
+    .attr("height", mainCompany.height)
+    .attr("transform", function (d, i) {
+      return "translate(-10,-10)";
+    });
 
-  d3.select("path").attr("d", pathData);
+    let g = svg
+    .selectAll("g")
+    .data(data)
+    .enter()
+    .append("g")
+    .attr("height", graph.height)
+    .attr("width", graph.width)
+    .attr("transform", function (d, i) {
+      return "translate(70,90)";
+    });
+
+  var radialLineGenerator = d3.radialLine();
+  var r1 = 70;
+  var radialpoints = [
+    [0, r1],
+    [Math.PI * 0.5, r1],
+    [Math.PI , r1],
+    [Math.PI * 1.5 , r1],
+    [Math.PI * 2 , r1],
+    
+    ];
+
+  var radialLine = radialLineGenerator(radialpoints);
+
+  g.append("path").attr("class", "radial").attr("d", radialLine);
 };
 
 populateCompany("purchaser", purchaserData, "purchaser-container");

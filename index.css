@@ -25,9 +25,6 @@ svg text {
 }
 .maincompany-container{
     height: 100px;
+    margin-left: 500px;
 }
 
-.path {
-	fill: none;
-	stroke: #999;
-}
