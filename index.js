@@ -7,8 +7,8 @@ var graph = {
   height: 40,
   width: 200,
 };
-var purchaserData = [15, 18, 46];
-var distributorData = [10, 134, 23, 123];
+var purchaserData = [15, 13];
+var distributorData = [34,44];
 var mainCompanyData = [10];
 var colors = ["#ffffcc", "#c2e699", "#78c679", "#31a354", "#006837"];
 
@@ -58,6 +58,106 @@ const populateCompany = (type, data, container) => {
     .attr("y", function (d, i) {
       return type == "purchaser" ? 140 : 2 * companyTypeHeight + 200;
     });
+
+  let drawPurchaserConnectors = (d, i) => {
+    let lineGenerator = d3.line();
+    let points;
+    switch (i) {
+      case 0:
+        points = [
+          [500, 210],
+          [500, 250],
+          [660, 250],
+          [660, 310],
+        ];
+        break;
+
+      case 1:
+        points = [
+          [800, 210],
+          [800, 250],
+          [660, 250],
+          [660, 310],
+        ];
+        break;
+
+      case 2:
+        points = [
+          [1100, 210],
+          [1100, 250],
+          [660, 250],
+          [660, 310],
+        ];
+        break;
+
+      default:
+        points = [
+          [500, 210],
+          [500, 250],
+          [660, 250],
+          [660, 310],
+        ];
+        break;
+    }
+
+    let pathData = lineGenerator(points);
+    return pathData;
+  };
+
+  let drawDistributorsConnectors = (d, i) => {
+    let lineGenerator = d3.line();
+    let points;
+    switch (i) {
+      case 0:
+        points = [
+          [500, 240],
+          [500, 190],
+          [660, 190],
+          [660, 150],
+        ];
+        break;
+
+      case 1:
+        points = [
+          [820, 240],
+          [820, 190],
+          [660, 190],
+          [660, 150],
+        ];
+        break;
+
+      case 2:
+        points = [
+          [1080, 240],
+          [1080, 190],
+          [660, 190],
+          [660, 150],
+        ];
+        break;
+
+      default:
+        points = [
+          [500, 210],
+          [500, 250],
+          [660, 250],
+          [660, 310],
+        ];
+        break;
+    }
+
+    let pathData = lineGenerator(points);
+    return pathData;
+  };
+
+  if (type === "purchaser") {
+    g.append("path").attr("d", function (d, i) {
+      return drawPurchaserConnectors(d, i);;
+    });
+  } else {
+    g.append("path").attr("d", function (d, i) {
+      return drawDistributorsConnectors(d, i);;
+    });
+  }
 };
 
 const populateMainCompany = (type, data, container) => {
@@ -70,7 +170,7 @@ const populateMainCompany = (type, data, container) => {
       return "translate(-10,-10)";
     });
 
-    let g = svg
+  let g = svg
     .selectAll("g")
     .data(data)
     .enter()
@@ -86,11 +186,10 @@ const populateMainCompany = (type, data, container) => {
   var radialpoints = [
     [0, r1],
     [Math.PI * 0.5, r1],
-    [Math.PI , r1],
-    [Math.PI * 1.5 , r1],
-    [Math.PI * 2 , r1],
-    
-    ];
+    [Math.PI, r1],
+    [Math.PI * 1.5, r1],
+    [Math.PI * 2, r1],
+  ];
 
   var radialLine = radialLineGenerator(radialpoints);
 
