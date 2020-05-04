@@ -61,28 +61,6 @@ const populateCompany = (type, data, container) => {
 };
 
 const populateMainCompany = (type, data, container) => {
-  var lineData = [
-    { x: 1, y: 5 },
-    { x: 20, y: 20 },
-    { x: 40, y: 10 },
-    { x: 60, y: 40 },
-    { x: 80, y: 5 },
-    { x: 100, y: 60 },
-    { x: 500, y: 60 },
-    { x: 600, y: -8 },
-    { x: 700, y: -10 },
-  ];
-
-  var lineFunction = d3
-    .line()
-    .x(function (d) {
-      return d.x;
-    })
-    .y(function (d) {
-      return d.y;
-    })
-    .curve(d3.curveLinear);
-
   let svg = d3
     .select(`.${container}`)
     .append("svg")
