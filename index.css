@@ -1,0 +1,33 @@
+.container {
+    position: absolute;
+    width: 100vh;
+    height: 100vh;
+}
+
+svg rect {
+    fill: orange;
+}
+
+svg text {
+    fill: white;
+    font: 10px sans-serif;
+    text-anchor: end;
+}
+.heading {
+    text-align: center;
+}
+
+.purchaser-container{
+    height: 200px;
+}
+.distributor-container{
+    height: 200px;
+}
+.maincompany-container{
+    height: 100px;
+}
+
+.path {
+	fill: none;
+	stroke: #999;
+}

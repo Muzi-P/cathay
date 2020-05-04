@@ -6,32 +6,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Learn D3</title>
         <script src="https://d3js.org/d3.v5.min.js"></script>
-
-        <style>
-            .container {
-                position: absolute;
-                width: 100vh;
-                height: 100vh;
-            }
-
-            svg rect {
-                fill: orange;
-            }
-
-            svg text {
-                fill: white;
-                font: 10px sans-serif;
-                text-anchor: end;
-            }
-        </style>
+        <link rel="stylesheet"  type="text/css" href="index.css">
     </head>
-
+    <style>
+        path {
+            fill: none;
+            stroke: #999;
+        }
+        </style>
     <body>
-        <h1>SVG Shapes</h1>
+        <h1 class ="heading">關聯網絡示意</h1>
         <!-- <svg width="400" height="400" style="background: #f4f4f4;">
             <rect width="300" height="300" style="fill:rgb(255,0,0); stroke:rgb(0,0,0); stroke-width:3" x="50" y="50" />
         </svg> -->
         <!-- <div id="element" class="container"></div> -->
+
+        <div class="purchaser-container"></div>
+        <div class="maincompany-container">
+            <svg width="700" height="110">
+                <path></path>
+            </svg>
+        </div>
+        <div class="distributor-container"></div>
+
+        
 
         <script src="index.js"></script>
     </body>
